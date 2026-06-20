@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . index.html [L]
+</IfModule>
+
+# Proteksi agar file .env dan .php mentah tidak bisa diakses langsung via browser jika ada
+
+RedirectMatch 403 /\.(env|sql|json|git|md)$

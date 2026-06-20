@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Beritahu Apache bahwa kita di subfolder dist
+  RewriteBase /dist/
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . index.html [L]
+  RewriteRule . /dist/index.html [L]
+</IfModule>
+
+# Proteksi agar file .env dan .php mentah tidak bisa diakses langsung via browser jika ada
+
+RedirectMatch 403 /\.(env|sql|json|git|md)$
