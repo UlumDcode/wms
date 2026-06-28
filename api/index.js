@@ -15,26 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // --- ROUTERS MOCK API ---
 
-app.all('/api/settings.php', (req, res) => {
-  const action = req.query.action;
-  
-  if (action === 'get_store') return res.json(mockStore);
-  if (action === 'get_wa_status') return res.json({ status: true, state: "CONNECTED", message: "WhatsApp is ready!" });
-  if (action === 'get_preview_stats') return res.json({
-    sisa_piutang: "1.500.000",
-    sisa_hutang: "3.200.000",
-    total_penjualan: "15.000.000",
-    jumlah_transaksi: "45"
-  });
-  if (action === 'get_coa_list') return res.json({ status: "success", data: mockCOA });
-  if (action === 'get_qr') return res.json({ status: true, url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/ebs5QAAAABJRU5ErkJggg==" }); // tiny transparent pixel for mock
-  if (action === 'test_wa') return res.json({ status: true, message: "Sent" });
-  if (action === 'disconnect_wa') return res.json({ status: true, message: "Disconnected" });
-  if (action === 'save_store') return res.json({ status: "success", message: "Saved" });
-  
-  res.json({ status: "success", data: mockStore });
-});
-
 // 1. log.php
 app.all('/api/log.php', (req, res) => {
   res.json({
