@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"php -S 0.0.0.0:8000 -t api\" \"node sync/runner.js\"",
+    "dev": "concurrently \"vite\"",
     "build": "vite build",
     "preview": "vite preview",
     "k6:test": "k6 run k6-connection-test.js",
